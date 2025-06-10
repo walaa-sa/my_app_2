@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_app_2/constants/path_images.dart';
 import 'package:my_app_2/constants/text_app.dart';
+import 'package:my_app_2/screen/home_screen.dart';
 import 'package:my_app_2/screen/sign-in_screen.dart';
 import 'package:my_app_2/widgets/welcom_wedget.dart';
 
@@ -47,7 +48,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return const SignIn();
+                      return HomeScreen();
                     },
                   ),
                 );

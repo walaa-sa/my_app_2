@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:my_app_2/screen/sign-up_screen.dart';
+import 'package:my_app_2/screen/sign-in_screen.dart';
 
-class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<SignIn> createState() => _SignInState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _SignInState extends State<SignIn> {
+class _SignUpState extends State<SignUp> {
   bool isObscure = true;
   String? myEmail;
   String? myPassword;
@@ -32,7 +32,9 @@ class _SignInState extends State<SignIn> {
             Padding(
               padding: const EdgeInsets.all(15),
               child: Column(
+                // spacing: 15,
                 crossAxisAlignment: CrossAxisAlignment.start,
+
                 children: [
                   const Text(
                     "Welcome to Newst",
@@ -80,7 +82,8 @@ class _SignInState extends State<SignIn> {
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
-                      border: OutlineInputBorder(borderSide: BorderSide.none),
+                      border:
+                          const OutlineInputBorder(borderSide: BorderSide.none),
                       hintText: "************",
                       suffixIcon: IconButton(
                         onPressed: () {
@@ -95,35 +98,68 @@ class _SignInState extends State<SignIn> {
                       ),
                     ),
                   ),
-                  TextButton(
-                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                    onPressed: () {},
-                    child: const Text(
-                      "Forgot Password?",
-                      style: TextStyle(
-                        fontFamily: "D-DIN",
-                        color: Color(0xffC53030),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        decoration: TextDecoration.underline,
-                        decorationColor: Color(0xffC53030),
+                  const Text(
+                    "Confirm Password",
+                    style: TextStyle(
+                      fontFamily: "D-DIN",
+                      color: Color(0xff363636),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  TextFormField(
+                    onFieldSubmitted: (value) {
+                      myPassword = value;
+                    },
+                    obscureText: isObscure,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
+                      border:
+                          const OutlineInputBorder(borderSide: BorderSide.none),
+                      hintText: "************",
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            isObscure = !isObscure;
+                          });
+                        },
+                        icon: Icon(
+                          isObscure ? Icons.visibility : Icons.visibility_off,
+                          color: Colors.grey,
+                        ),
                       ),
                     ),
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      print(myEmail);
-                      print(myPassword);
+                      // void registerWithEmail(
+                      //   String email,
+                      //   String password,
+                      // )
+                      // //async {
+                      //   try {
+                      //     await FirebaseAuth.instance
+                      //         .createUserWithEmailAndPassword(
+                      //           email: myEmail!,
+                      //           password: myPassword!,
+                      //         );
+                      //   print('✅ تم إنشاء الحساب بنجاح');
+                      //   // يمكن تحويل المستخدم لصفحة أخرى هنا
+                      // } on FirebaseAuthException catch (e) {
+                      //   print('❌ خطأ في التسجيل: ${e.message}');
+                      // }
+                      // }
                     },
                     style: ElevatedButton.styleFrom(
-                      fixedSize: Size(330, 48),
-                      backgroundColor: Color(0xffC53030),
+                      fixedSize: const Size(330, 48),
+                      backgroundColor: const Color(0xffC53030),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),
                     child: const Text(
-                      "Sign In",
+                      "Sign Up",
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.white,
@@ -139,7 +175,7 @@ class _SignInState extends State<SignIn> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  "Don't have an account? ",
+                  "Have an account ? ",
                   style: TextStyle(
                     fontFamily: "D-DIN",
                     color: Color(0xff363636),
@@ -148,13 +184,13 @@ class _SignInState extends State<SignIn> {
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => SignUp()),
+                      MaterialPageRoute(builder: (context) => SignIn()),
                     );
                   },
                   child: const Text(
-                    "Sign Up",
+                    "Sign In",
                     style: TextStyle(
                       fontFamily: "D-DIN",
                       color: Color(0xffC53030),

@@ -18,8 +18,6 @@ class SplashScreen extends StatelessWidget {
       },
       onEnd: () async {
         debugPrint("onEnd 1");
-        nextScreen:
-        WelcomeScreen();
       },
     );
   }
